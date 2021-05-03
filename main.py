@@ -7,10 +7,12 @@ from flask_sqlalchemy import SQLAlchemy
 from base64 import b64encode
 import json
 from sqlalchemy.exc import IntegrityError
+import os
 
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database/data.db'
+#app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database/data.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL')
 db = SQLAlchemy(app)
 
 ############## MODELOS #############################
